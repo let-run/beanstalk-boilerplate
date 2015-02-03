@@ -18,10 +18,10 @@
 
 #### Optional
 
-- If you're using RDB and want to connect to DB administration tools (e.g. pgAdmin), you will need to set up your Security Group to allow the IP you're trying to connect from:
-    1. Services > RDS > Instances
-    2. Click the magnifying glass to expand the details
-    3. Mouse over the "information" icon next to the green "authorized" and click on the link to the Security Group
-    4. Actions > Edit inbound rules
-    5. Add Rule > Custom TCP Rule > Copy the port > Change source to "My IP" > Save
-    6. You can now set up the connection in your admin tool using your DB credentials
+If you're using RDB and want to connect to DB administration tools (e.g. pgAdmin), you will need to set up your Security Group to allow the IP you're trying to connect from:
+1. Services > RDS > Instances
+2. Click the magnifying glass to expand the details
+3. Mouse over the "information" icon next to the green "authorized" and click on the link to the Security Group
+4. Actions > Edit inbound rules
+5. Add Rule > Custom TCP Rule > Copy the port > Change source to "My IP" > Save
+6. You can now set up the connection in your admin tool using your DB credentials
