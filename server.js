@@ -1,7 +1,7 @@
 'use strict';
 
 var Boom = require('boom'),
-    Handlebars = require('handlebars'),
+    handlebars = require('handlebars'),
     Hapi = require('hapi'),
     Path = require('path'),
     PG = require('pg'),
@@ -15,7 +15,7 @@ Server.start(function () {
 
 Server.views({
     engines: {
-        html: Handlebars
+        html: handlebars
     },
     path: Path.join(__dirname, 'app')
 });
