@@ -1,29 +1,29 @@
 'use strict';
 
-var Boom = require('boom'),
-    handlebars = require('handlebars'),
-    Hapi = require('hapi'),
-    Path = require('path'),
-    PG = require('pg'),
-    Server = new Hapi.Server();
+const Hapi = require('@hapi/hapi');
 
-Server.connection({ port: process.env.PORT || 5000});
+const init = async () => {
 
-Server.start(function () {
-    console.log('Server running at: ', Server.info.uri);
+    const server = Hapi.server({
+        port: process.env.PORT || 8000,
+        host: 'localhost'
+    });
+
+    server.route({
+        method: 'GET',
+        path: '/',
+        handler: (request, h) => {
+            return 'Hello World!';
+        }
+    });
+
+    await server.start();
+    console.log('Server running on %s', server.info.uri);
+};
+
+process.on('unhandledRejection', (err) => {
+    console.log(err);
+    process.exit(1);
 });
 
-Server.views({
-    engines: {
-        html: handlebars
-    },
-    path: Path.join(__dirname, 'app')
-});
-
-Server.route({
-    method: 'GET',
-    path: '/{param*}',
-    handler: function (request, reply) {
-        return reply.file('index.html');
-    }
-});
+init();
